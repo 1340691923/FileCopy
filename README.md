@@ -1,5 +1,7 @@
 "# -" 
-![Alt text](http://test.zcjian.cn/demo.png)
+
+![](https://img.shields.io/badge/golang-walk-green)
+
 
 挑歌拷贝go程序
 
@@ -23,6 +25,4 @@
 可以选择 拷贝时 覆盖文件还是跳过，复制还是剪切
 
 列表会显示出来配置文件中各个配置的完成情况，列表下面的详情会显示详细信息
-
-
 
