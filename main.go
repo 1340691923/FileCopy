@@ -2,13 +2,17 @@ package main
 
 import (
 	"bufio"
+	"errors"
 	"fmt"
 	"github.com/lxn/walk"
 	. "github.com/lxn/walk/declarative"
+	"golang.org/x/text/encoding/simplifiedchinese"
 	"io/ioutil"
 	"log"
 	"os"
+	"os/exec"
 	"path/filepath"
+	"runtime"
 	"strconv"
 	"strings"
 	"sync"
@@ -20,6 +24,7 @@ type FileInfo struct {
 	FileNames string
 	Dir      string
 }
+
 type MyWindow struct {
 	*walk.MainWindow
 	TxtText      *walk.LineEdit
@@ -39,8 +44,6 @@ type MyWindow struct {
 	Baz int
 	//存放源文件夹 找到的文件
 	FindArr []string
-	LineArr []string
-	NeedMoveArr []string
 	ExportBtn *walk.PushButton
 	lb *walk.ListBox
 	ExportTxt  *walk.LineEdit
@@ -49,23 +52,30 @@ type MyWindow struct {
 	Dump int
 	TxtDealCountText *walk.LineEdit
 	StopBtn *walk.PushButton
+	fb *walk.ListBox
+	lineMap map[string]string
 }
+
+var lineSlice []string
 var wg sync.WaitGroup
 var fileWg sync.WaitGroup
-var lineMap map[string]bool
-var lineSlice []string
 var err error
 var lock sync.Mutex
 var ch = make(chan struct{}, 255)
 var stopFlag bool = false
+var needMoveCount int
+type Charset string
 
-const (
-	txtFilePath int = 1
-	exportFilePath int = 2
-	sourceDirPath int = 1
-	targetDirPath int = 2
+const(
+	txtFilePath int32 = 1
+	exportFilePath int32 = 2
+	sourceDirPath int32 = 1
+	targetDirPath int32 = 2
+	UTF8    = Charset("UTF-8")
+	GB18030 = Charset("GB18030")
 )
-func main() {
+
+func main(){
 	mw := new(MyWindow)
 	mw.Baz = 1
 	mw.Dump = 1
@@ -85,7 +95,6 @@ func main() {
 		OnDropFiles: func(files []string) {
 			if mw.TxtText.Text()==""{
 				mw.TxtText.SetText(strings.Join(files, "\r\n"))
-				mw.InitTxt()
 			}else if mw.SourceDirText.Text()==""{
 				mw.SourceDirText.SetText(strings.Join(files, "\r\n"))
 			}else if mw.TargetDirText.Text()==""{
@@ -102,25 +111,25 @@ func main() {
 						Title:  "执行条件",
 						Layout: Grid{Columns:3,},
 						Children: []Widget{
-							Label{Text: "配置文件(也可将文件拖入窗体):"},
+							Label{Text: "配置文件:"},
 							LineEdit{AssignTo: &mw.TxtText},
 							PushButton{
 								AssignTo: &mw.ChooseTxtBtn,
 								Text:     "选择配置文件",
 							},
-							Label{Text: "源文件夹(也可将文件拖入窗体):"},
+							Label{Text: "源文件夹:"},
 							LineEdit{AssignTo: &mw.SourceDirText},
 							PushButton{
 								AssignTo: &mw.ChooseSourceBtn,
 								Text:     "选择源文件夹",
 							},
-							Label{Text: "目标文件夹(也可将文件拖入窗体):"},
+							Label{Text: "目标文件夹:"},
 							LineEdit{AssignTo: &mw.TargetDirText},
 							PushButton{
 								AssignTo: &mw.ChooseTargetBtn,
 								Text:     "选择目标文件夹",
 							},
-							Label{Text: "导出文件位置(也可将文件拖入窗体):"},
+							Label{Text: "导出文件位置:"},
 							LineEdit{AssignTo: &mw.ExportTxt},
 							PushButton{
 								AssignTo: &mw.ChooseExportBtn,
@@ -167,7 +176,6 @@ func main() {
 							},
 						},
 					},
-
 					PushButton{
 						AssignTo: &mw.ExecBtn,
 						Text:     "执行",
@@ -188,10 +196,13 @@ func main() {
 				},
 			},
 			Composite{
-				Layout: Grid{Columns: 1, Spacing: 80},
+				Layout: Grid{Columns: 2, Spacing: 80},
 				Children: []Widget{
 					ListBox{
 						AssignTo: &mw.lb,
+					},
+					ListBox{
+						AssignTo: &mw.fb,
 					},
 				},
 			},
@@ -202,10 +213,10 @@ func main() {
 						Title:  "执行结果",
 						Layout: Grid{Columns: 2},
 						Children: []Widget{
-							Label{Text: "配置文件内的配置数量:"},
-							LineEdit{AssignTo: &mw.TxtCountText, ReadOnly: true},
 							Label{Text: "配置文件已完成数量:"},
 							LineEdit{AssignTo: &mw.TxtDealCountText, ReadOnly: true},
+							Label{Text: "配置文件内的配置数量:"},
+							LineEdit{AssignTo: &mw.TxtCountText, ReadOnly: true},
 							Label{Text: "从源文件夹检索到的文件总数量:"},
 							LineEdit{AssignTo: &mw.AllCountText, ReadOnly: true},
 							Label{Text: "从源文件夹检索到的匹配的拷贝文件数量:"},
@@ -232,7 +243,6 @@ func main() {
 
 //递归计算目录下所有文件
 func(mw *MyWindow)WalkDir(path string, filePath chan <- string){
-	defer fileWg.Done()
 	ch <- struct{}{} //限制并发量
 	entries, _ := ioutil.ReadDir(path)
 	<- ch
@@ -244,23 +254,14 @@ func(mw *MyWindow)WalkDir(path string, filePath chan <- string){
 			filePath <- path+"\\"+e.Name()
 		}
 	}
+	defer fileWg.Done()
 }
 
 //暂停
 func(mw *MyWindow)StopAction(){
 	mw.Error("暂停成功")
 	mw.StopBtn.SetEnabled(false)
-	stopFlag= true
-}
-
-//让列表显示配置项
-func(mw *MyWindow)InitTxt(){
-	txtText := mw.TxtText.Text()
-	err = mw.ReadLineFile(txtText)
-	lineSlice = mw.LineArr
-	mw.lb.SetModel(lineSlice)
-	mw.TxtCountText.SetText(strconv.Itoa(len(lineSlice)))
-	mw.ExportBtn.SetEnabled(true)
+	stopFlag = true
 }
 
 //导出未完成的配置
@@ -289,13 +290,14 @@ func(mw *MyWindow)ExportAction(){
 	}
 
 	f, err := os.Create(exportTxt)
+
 	if err != nil {
 		mw.Error("创建文件失败："+err.Error())
 		return
 	}
-	defer f.Close()
+
 	w := bufio.NewWriter(f)
-	for _, f := range lineSlice{
+	for f,_ := range mw.lineMap{
 		wg.Add(1)
 		go func(f string){
 			lock.Lock()
@@ -307,10 +309,12 @@ func(mw *MyWindow)ExportAction(){
 	}
 	wg.Wait()
 	w.Flush()
+	f.Close()
 	mw.Success("文件导出完毕，文件地址为："+exportTxt)
 }
+
 //选择文件夹
-func (mw *MyWindow)OpenDirActionTriggered(types int){
+func (mw *MyWindow)OpenDirActionTriggered(types int32){
 	dlg := new(walk.FileDialog)
 	dlg.Title = "打开文件"
 	dlg.Filter = "文本文件 (*.txt)|*.txt|所有文件 (*.*)|*.*"
@@ -320,18 +324,16 @@ func (mw *MyWindow)OpenDirActionTriggered(types int){
 	} else if !ok {
 		return
 	}
-
 	s := fmt.Sprintf("%s", dlg.FilePath)
 	if types == sourceDirPath{
 		mw.SourceDirText.SetText(s)
 	}else if types == targetDirPath{
 		mw.TargetDirText.SetText(s)
 	}
-	mw.InitTxt()
 }
 
 //选择文件
-func (mw *MyWindow)OpenFileActionTriggered(types int){
+func (mw *MyWindow)OpenFileActionTriggered(types int32){
 	dlg := new(walk.FileDialog)
 	dlg.Title = "打开文件"
 	dlg.Filter = "文本文件 (*.txt)|*.txt|所有文件 (*.*)|*.*"
@@ -348,22 +350,16 @@ func (mw *MyWindow)OpenFileActionTriggered(types int){
 	}else if types == exportFilePath{
 		mw.ExportTxt.SetText(s)
 	}
-	mw.InitTxt()
 }
 
 //执行
 func (mw *MyWindow) ExecAction() {
 	defer mw.Close()
-	mw.NeedMoveArr = mw.NeedMoveArr[0:0]
-	if !stopFlag{
-		mw.TxtDealCountText.SetText("0")
-		mw.DealCountText.SetText("0")
-	}
+	runtime.GOMAXPROCS(runtime.NumCPU())
+
+
 	mw.ExecBtn.SetEnabled(false)
 	mw.ExecBtn.SetText("执行中...")
-	fmt.Println(mw.TxtText.Text())
-	fmt.Println(mw.SourceDirText.Text())
-	fmt.Println(mw.TargetDirText.Text())
 	txtText := mw.TxtText.Text()
 	sourceDirText := mw.SourceDirText.Text()
 	targetDirText := mw.TargetDirText.Text()
@@ -384,18 +380,15 @@ func (mw *MyWindow) ExecAction() {
 	}
 
 	flag,err := mw.PathExists(txtText)
-
 	if err!=nil{
 		mw.Error(err.Error())
 		return
 	}
-
 	flag2,err := mw.PathExists(sourceDirText)
 	if err!=nil{
 		mw.Error(err.Error())
 		return
 	}
-
 	flag3,err := mw.PathExists(targetDirText)
 	if err!=nil{
 		mw.Error(err.Error())
@@ -418,127 +411,133 @@ func (mw *MyWindow) ExecAction() {
 		mw.Error("目的文件夹地址不存在，请检查")
 		return
 	}
-
-	//读取文件
-	err = mw.ReadLineFile(txtText)
-	//读取源文件夹
+	if !stopFlag{
+		mw.TxtDealCountText.SetText("0")
+		mw.DealCountText.SetText("0")
+		mw.lineMap = make(map[string]string,0)
+		err = mw.ReadLineFile(txtText)
+	}
+	//配置文件列表 赋值
+	mw.lb.SetModel(lineSlice)
+	mw.TxtCountText.SetText(strconv.Itoa(len(lineSlice)))
+	mw.ExportBtn.SetEnabled(true)
+	//正常还是断点 都要 读取源文件夹
 	mw.ListFiles(sourceDirText)
+	mw.fb.SetModel(mw.FindArr)
 	//源文件夹文件数量
 	mw.AllCountText.SetText(strconv.Itoa(len(mw.FindArr)))
 
-	for _,filePath := range mw.FindArr {
-		wg.Add(1)
-		go func(filePath string) {
-			fileInfo := new(FileInfo)
-			fileInfo.NewFile(filePath)
-			fileName := fileInfo.FileName
-			if mw.InLineArr(fileName){
-				lock.Lock()
-				mw.NeedMoveArr = append(mw.NeedMoveArr,filePath)
-				lock.Unlock()
-			}
-			wg.Done()
-		}(filePath)
-	}
+	needMoveCount = 0
 
-	wg.Wait()
+	mw.ExecBtn.SetText("匹配文件中...")
 
-	//需要拷贝的文件数量
-	needMoveLen := len(mw.NeedMoveArr)
-	needMoveLen2 := strconv.Itoa(needMoveLen)
-	mw.NeedCountText.SetText(needMoveLen2)
-	lineMap := make(map[string]bool,len(mw.LineArr))
+	findArrlen := len(mw.FindArr)
 
-	for _,line:= range mw.LineArr{
-		wg.Add(1)
-		go func(line string) {
-			lock.Lock()
-			lineMap[line]=true
-			lock.Unlock()
-			wg.Done()
-		}(line)
-	}
-
-	wg.Wait()
-
-	if !stopFlag{
-		mw.TxtCountText.SetText(strconv.Itoa(len(mw.LineArr)))
-	}
-	mw.StopBtn.SetEnabled(true)
-	stopFlag = false
-	for _,line:= range mw.LineArr{
-		flag := false
-		for _,needMoveFile := range mw.NeedMoveArr{
-			if stopFlag{
-				mw.Success("暂停成功")
-				return
-			}
-			fileInfo := new(FileInfo)
-			fileInfo.NewFile(needMoveFile)
-			if line == fileInfo.FileName{
-				flag = true
-				copyFile := mw.TargetDirText.Text()+"\\"+fileInfo.FileNames
-				fileFlag,_ := mw.PathExists(copyFile)
-				if fileFlag{
-					if mw.Dump == 2{
-						err := mw.CopeFile(needMoveFile,copyFile)
-						if err!=nil{
-							mw.Error("文件拷贝异常"+err.Error())
-							return
-						}
-					}
-				}else{
-					err := mw.CopeFile(needMoveFile,copyFile)
-					if err!=nil{
-						mw.Error("文件拷贝异常"+err.Error())
-						return
-					}
-				}
-				if mw.Baz == 2{
-					//删除文件
-					os.Remove(needMoveFile)
-				}
-				count:=mw.DealCountText.Text()
-				sum,_:= strconv.Atoi(count)
-				sum++
-				mw.DealCountText.SetText(strconv.Itoa(sum))
+	for i:=0;i<findArrlen;i++{
+		for line,_:= range mw.lineMap{
+			fileName,_,_ := NewFile(mw.FindArr[i])
+			if fileName == line{
+				needMoveCount = needMoveCount +1
+				mw.lineMap[line]=mw.FindArr[i]
 				break
 			}
 		}
-		if flag {
-			delete(lineMap, line)
-			lineSlice = []string{}
-			for k,_:= range lineMap{
-				wg.Add(1)
-				func(k string){
-					lock.Lock()
-					lineSlice = append(lineSlice,k)
-					lock.Unlock()
-					wg.Done()
-				}(k)
-			}
-			wg.Wait()
-
-			mw.lb.SetModel(lineSlice)
-			txtDealCount:=mw.TxtDealCountText.Text()
-			sum,_:= strconv.Atoi(txtDealCount)
-			sum++
-			mw.TxtDealCountText.SetText(strconv.Itoa(sum))
-		}
 	}
+
+	mw.ExecBtn.SetText("匹配完毕...")
+	//需要拷贝的文件数量
+	needMoveLen := strconv.Itoa(needMoveCount)
+	//赋值
+	mw.NeedCountText.SetText(needMoveLen)
+
+	if !stopFlag{
+		mw.TxtCountText.SetText(strconv.Itoa(len(mw.lineMap)))
+	}
+
+	mw.StopBtn.SetEnabled(true)
+
+	stopFlag = false
+
+	mw.ExecBtn.SetText("文件迁移中...")
+	mw.TxtDealCountText.SetText("0")
+	for line,needMoveFile:= range mw.lineMap{
+		if stopFlag {
+			return
+		}
+		if needMoveFile != ""{
+			err := mw.CopeFile(needMoveFile)
+			if err != nil{
+				mw.Error("文件拷贝异常"+err.Error())
+				return
+			}
+			count:=mw.DealCountText.Text()
+			sum,_:= strconv.Atoi(count)
+			sum++
+			mw.DealCountText.SetText(strconv.Itoa(sum))
+			delete(mw.lineMap,line)
+		}
+
+		txtDealCount:=mw.TxtDealCountText.Text()
+		sum,_:= strconv.Atoi(txtDealCount)
+		sum++
+		mw.TxtDealCountText.SetText(strconv.Itoa(sum))
+	}
+	lineSlice = nil
+	mw.ExecBtn.SetText("文件迁移完成，计算剩余配置数量中...")
+	for k,_:= range mw.lineMap{
+		lineSlice = append(lineSlice,k)
+	}
+
+	mw.lb.SetModel(lineSlice)
 	mw.Success("处理完成")
 }
 
+//dos字符串转码
+func ConvertByte2String(byte []byte, charset Charset) string {
+	var str string
+	switch charset {
+	case GB18030:
+		var decodeBytes,_=simplifiedchinese.GB18030.NewDecoder().Bytes(byte)
+		str= string(decodeBytes)
+	case UTF8:
+		fallthrough
+	default:
+		str = string(byte)
+	}
+	return str
+}
+
 //拷贝文件
-func(mw *MyWindow)CopeFile(needMoveFile string,copyFile string)(err error){
-	writeContent, err := ioutil.ReadFile(needMoveFile)
-	if err!=nil{
+func(mw *MyWindow)CopeFile(needMoveFile string)(err error){
+	_,fileNames,sourceDir :=NewFile(needMoveFile)
+	//多线程拷贝
+	cmd := exec.Command("ROBOCOPY",sourceDir,mw.TargetDirText.Text(),fileNames,"/MT:128","/r:0")
+	//剪切
+	if mw.Baz == 2 {
+		cmd = exec.Command("ROBOCOPY",sourceDir,mw.TargetDirText.Text(),fileNames,"/mov","/MT:128","/r:0")
+	}
+
+	stdout, err := cmd.StdoutPipe()
+
+	if  err != nil {//获取输出对象，可以从该对象中读取输出结果
 		return err
 	}
-	err = ioutil.WriteFile(copyFile, []byte(writeContent), os.ModePerm)
-	if nil != err {
-		os.Remove(copyFile)
+
+	defer stdout.Close()// 保证关闭输出流
+
+	if err = cmd.Start(); err != nil {// 运行命令
 		return err
+	}
+
+	if opBytes, err := ioutil.ReadAll(stdout);err != nil { // 读取输出结果   
+		return err
+	} else {
+		cmdRe:=ConvertByte2String(opBytes,"GB18030")
+		res := string(cmdRe)
+		if strings.Contains(res,"错误"){
+			errArr := strings.Split(res,"错误")
+			return errors.New(errArr[1])
+		}
 	}
 	return
 }
@@ -546,9 +545,9 @@ func(mw *MyWindow)CopeFile(needMoveFile string,copyFile string)(err error){
 //回收资源
 func(mw *MyWindow) Close(){
 	if !stopFlag{
-		mw.FindArr = mw.FindArr[0:0]
-		mw.LineArr = mw.LineArr[0:0]
+		lineSlice = make([]string,0)
 	}
+	mw.FindArr = make([]string,0)
 	mw.ExecBtn.SetText("执行")
 	mw.ExecBtn.SetEnabled(true)
 	mw.ExportBtn.SetEnabled(true)
@@ -567,70 +566,53 @@ func(mw *MyWindow) PathExists(path string) (bool, error) {
 }
 
 //文件解析
-func(mw *FileInfo)NewFile(filePath string){
+func NewFile(filePath string)(fileName string,fileNames string,Dir string){
 	filePath2 := strings.Split(filePath,".")
 	houzhui:=""
 	if len(filePath2)>1{
 		houzhui = filePath2[1]
 	}
-
 	filePath3 := strings.Split(filePath2[0],"\\")
-	fileName := filePath3[len(filePath3)-1]
-	filePath4 := strings.Split(filePath2[0],fileName)
-	mw.Dir = filePath4[0]
-	mw.Houzhui = houzhui
-	mw.FileName = fileName
-	mw.FileNames = fileName+"."+houzhui
-}
-
-//是否在配置文件中
-func(mw *MyWindow) InLineArr(fileName string)bool{
-	for _,v:= range mw.LineArr{
-		if fileName == v{
-			return true
-		}
-	}
-	return false
+	fileName = filePath3[len(filePath3)-1]
+	fileNames = fileName+"."+houzhui
+	Dir = strings.Split(filePath,fileNames)[0]
+	return
 }
 
 //读取配置文件
 func(mw *MyWindow) ReadLineFile(fileName string)(err error) {
-	if stopFlag{
-		mw.LineArr = lineSlice
-	}else{
-		if file, err := os.Open(fileName);err !=nil{
-			return err
-		}else {
-			scanner := bufio.NewScanner(file)
-			mw.LineArr = mw.LineArr[0:0]
-			for scanner.Scan(){
-				wg.Add(1)
-				go func(line string){
-					lock.Lock()
-					mw.LineArr = append(mw.LineArr,string(line))
-					lock.Unlock()
-					wg.Done()
-				}(scanner.Text())
-			}
-			wg.Wait()
+	mw.ExecBtn.SetText("读取配置文件中...")
+	mw.lineMap = make(map[string]string,0)
+	if file, err := os.Open(fileName);err !=nil{
+		return err
+	}else {
+		lineSlice = nil
+		scanner := bufio.NewScanner(file)
+		for scanner.Scan(){
+			wg.Add(1)
+			go func(line string){
+				lock.Lock()
+				mw.lineMap[line] = ""
+				lineSlice = append(lineSlice,line)
+				lock.Unlock()
+				wg.Done()
+			}(scanner.Text())
 		}
+		wg.Wait()
 	}
 	return err
 }
 
 //得到源文件夹 内的所有文件
-func(mw *MyWindow) ListFiles(dirname string)  {
-
+func(mw *MyWindow) ListFiles(dirname string){
+	mw.ExecBtn.SetText("遍历文件夹查找文件中...")
 	files := make(chan string)
-
 	fileWg.Add(1)
 	go mw.WalkDir(dirname, files)
-
 	go func(){
 		defer close(files)
 		fileWg.Wait()
 	}()
-
 	for file := range files {
 		wg.Add(1)
 		go func(file string) {
@@ -641,20 +623,6 @@ func(mw *MyWindow) ListFiles(dirname string)  {
 		}(file)
 	}
 	wg.Wait()
-}
-
-//得到源文件夹 内的所有文件
-func(mw *MyWindow) listFiles(dirname string)  {
-	fileInfos,_:=ioutil.ReadDir(dirname)
-	for _,fi:=range fileInfos{
-		filename := dirname+"\\"+fi.Name()   //拼写当前文件夹中所有的文件地址
-		if fi.IsDir(){      //判断是否是文件夹 如果是继续调用把自己的地址作为参数继续调用
-			mw.listFiles(filename)  //递归调用
-		}else{
-			mw.FindArr = append(mw.FindArr,filename)
-			//fmt.Println(filename)    //打印文件地址
-		}
-	}
 }
 
 //提示

@@ -1,5 +1,12 @@
+github.com/golang/crypto v0.0.0-20190829043050-9756ffdc2472/go.mod h1:yigFU9vqHzYiE8UmvKecakEJjdnWj3jj499lnFckfCI=
+github.com/golang/net v0.0.0-20190827160401-ba9fcec4b297/go.mod h1:z5CRVTTTmAJ677TzLLGU+0bjPO0LkuOLi4/5GtJWs/s=
+github.com/golang/sync v0.0.0-20190423024810-112230192c58/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
 github.com/golang/sys v0.0.0-20190902133755-9109b7679e13 h1:YX7ubuNpPqbsGPr5qwDKQW9H/+wmEX/cFGStRbJioFI=
 github.com/golang/sys v0.0.0-20190902133755-9109b7679e13/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+github.com/golang/text v0.3.2 h1:vDAeTQXl8YUdGoj2vMsMnzHi1xMJJ9S7iwnTBFL/pkA=
+github.com/golang/text v0.3.2/go.mod h1:bEr9sfX3Q8Zfm5fL9x+3itogRgK3+ptLWKqgva+5dAk=
+github.com/golang/tools v0.0.0-20190903025054-afe7f8212f0d/go.mod h1:b+2E5dAYhXwXZwtnZ6UAqBI28+e2cm9otk0dWdXHAEo=
+github.com/golang/xerrors v0.0.0-20190717185122-a985d3407aa7/go.mod h1:I/5z698sn9Ka8TeJc9MKroUUfqBBauWjQqLJ2OPfmY0=
 github.com/lxn/walk v0.0.0-20191001144247-31870cf268b0 h1:BZz2zJLMVWm5DeD4aesxePtWmP29qE7ZGlb8qDgF1jo=
 github.com/lxn/walk v0.0.0-20191001144247-31870cf268b0/go.mod h1:E23UucZGqpuUANJooIbHWCufXvOcT6E7Stq81gU+CSQ=
 github.com/lxn/win v0.0.0-20190919090605-24c5960b03d8 h1:RVMGIuuNgrpGB7I79f6xfhGCkpN47IaEGh8VTM0p7Xc=
