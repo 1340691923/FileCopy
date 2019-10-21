@@ -3,6 +3,7 @@ module cope-file
 require (
 	github.com/lxn/walk v0.0.0-20191001144247-31870cf268b0
 	github.com/lxn/win v0.0.0-20190919090605-24c5960b03d8 // indirect
+	golang.org/x/text v0.3.0
 	gopkg.in/Knetic/govaluate.v3 v3.0.0 // indirect
 )
 
