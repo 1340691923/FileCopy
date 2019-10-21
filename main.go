@@ -455,9 +455,9 @@ func (mw *MyWindow) ExecAction() {
 	}
 
 	mw.StopBtn.SetEnabled(true)
-	
+
 	stopFlag = false
-	
+
 	mw.ExecBtn.SetText("文件迁移中...")
 	mw.TxtDealCountText.SetText("0")
 	for line,needMoveFile:= range mw.lineMap{

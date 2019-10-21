@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a6162e6-caf1-43f6-9a18-b4d8eb96a5c7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/love.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cope-file.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/挑歌拷贝程序.exe" beforeDir="false" afterPath="$PROJECT_DIR$/挑歌拷贝程序.exe" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,155 +16,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/main.go">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://D:/mosquitto/mosquitto.conf">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="628" column="32" lean-forward="true" selection-start-line="628" selection-start-column="32" selection-end-line="628" selection-end-column="32" />
-              <folding>
-                <element signature="e#269#347#0" />
-                <element signature="e#363#1097#0" />
-                <element signature="e#1307#1472#0" />
-                <element signature="n#!!block;n#main#1" />
-                <element signature="e#1573#5327#0" />
-                <element signature="e#1587#1635#0" />
-                <element signature="e#1732#1742#0" />
-                <element signature="e#1755#1764#0" />
-                <element signature="e#1810#1882#0" />
-                <element signature="e#1875#1877#0" />
-                <element signature="e#1920#2317#0" />
-                <element signature="e#1949#2024#0" />
-                <element signature="e#2059#2123#0" />
-                <element signature="e#2158#2222#0" />
-                <element signature="e#2253#2313#0" />
-                <element signature="e#2340#5323#0" />
-                <element signature="e#2353#3601#0" />
-                <element signature="e#2436#3588#0" />
-                <element signature="e#2516#3580#0" />
-                <element signature="e#2604#2678#0" />
-                <element signature="e#2772#2849#0" />
-                <element signature="e#2944#3022#0" />
-                <element signature="e#3114#3193#0" />
-                <element signature="e#3218#3571#0" />
-                <element signature="e#3278#3561#0" />
-                <element signature="e#3300#3412#0" />
-                <element signature="e#3434#3550#0" />
-                <element signature="e#3615#4368#0" />
-                <element signature="e#3633#3658#0" />
-                <element signature="e#3682#4362#0" />
-                <element signature="e#3705#4022#0" />
-                <element signature="e#3760#4014#0" />
-                <element signature="e#3780#3883#0" />
-                <element signature="e#3903#4005#0" />
-                <element signature="e#4039#4098#0" />
-                <element signature="e#4115#4256#0" />
-                <element signature="e#4213#4248#0" />
-                <element signature="e#4273#4355#0" />
-                <element signature="e#4383#4637#0" />
-                <element signature="e#4400#4425#0" />
-                <element signature="e#4450#4631#0" />
-                <element signature="e#4522#5189#0" />
-                <element signature="e#4582#5176#0" />
-                <element signature="e#4662#5168#0" />
-                <element signature="e#4760#4808#0" />
-                <element signature="e#4714#4758#0" />
-                <element signature="e#4913#4957#0" />
-                <element signature="e#5017#5062#0" />
-                <element signature="e#5114#5159#0" />
-                <element signature="e#5350#5373#0" />
-                <element signature="e#5375#5395#0" />
-                <element signature="e#5435#5457#0" />
-                <element signature="e#5500#5544#0" />
-                <element signature="e#5590#5637#0" />
-                <element signature="e#5683#5728#0" />
-                <element signature="e#5774#5819#0" />
-                <element signature="n#!!block;n#WalkDir#0" />
-                <element signature="e#5936#6081#0" />
-                <element signature="e#5953#6033#0" />
-                <element signature="e#6039#6078#0" />
-                <element signature="n#!!block;n#StopAction#0" />
-                <element signature="n#!!block;n#ExportAction#0" />
-                <element signature="e#6773#6811#0" />
-                <element signature="e#6835#6873#0" />
-                <element signature="e#6897#6936#0" />
-                <element signature="e#6956#6994#0" />
-                <element signature="e#7044#7091#0" />
-                <element signature="e#7162#7314#0" />
-                <element signature="e#7195#7308#0" />
-                <element signature="e#6945#6954#0" />
-                <element signature="n#!!block;n#OpenDirActionTriggered#0" />
-                <element signature="e#7594#7630#0" />
-                <element signature="e#7643#7656#0" />
-                <element signature="e#7393#7413#0" />
-                <element signature="e#7721#7755#0" />
-                <element signature="e#7785#7819#0" />
-                <element signature="n#!!block;n#OpenFileActionTriggered#0" />
-                <element signature="e#8044#8080#0" />
-                <element signature="e#8093#8106#0" />
-                <element signature="e#7830#7850#0" />
-                <element signature="e#8170#8198#0" />
-                <element signature="e#8229#8259#0" />
-                <element signature="n#!!block;n#ExecAction#0" />
-                <element signature="e#8651#8689#0" />
-                <element signature="e#8714#8752#0" />
-                <element signature="e#8777#8816#0" />
-                <element signature="e#8866#8903#0" />
-                <element signature="e#8959#8996#0" />
-                <element signature="e#9052#9089#0" />
-                <element signature="e#9103#9140#0" />
-                <element signature="e#9150#9191#0" />
-                <element signature="e#9202#9244#0" />
-                <element signature="e#9255#9297#0" />
-                <element signature="e#8919#9031#0" />
-                <element signature="e#9659#9839#0" />
-                <element signature="e#9663#9808#0" />
-                <element signature="e#9673#9745#0" />
-                <element signature="e#9988#10049#0" />
-                <element signature="e#10181#10649#0" />
-                <element signature="e#10191#10206#0" />
-                <element signature="e#10230#10488#0" />
-                <element signature="e#10284#10336#0" />
-                <element signature="e#10835#10873#0" />
-                <element signature="n#!!block;n#ConvertByte2String#0" />
-                <element signature="e#10751#10940#0" />
-                <element signature="e#10769#10880#0" />
-                <element signature="e#10882#10906#0" />
-                <element signature="e#10908#10937#0" />
-                <element signature="n#!!block;n#CopeFile#0" />
-                <element signature="e#11321#11426#0" />
-                <element signature="e#11478#11517#0" />
-                <element signature="e#11586#11610#0" />
-                <element signature="e#11666#11696#0" />
-                <element signature="e#11702#11882#0" />
-                <element signature="e#11805#11879#0" />
-                <element signature="n#!!block;n#Close#0" />
-                <element signature="e#11942#12018#0" />
-                <element signature="n#!!block;n#PathExists#0" />
-                <element signature="e#12250#12273#0" />
-                <element signature="e#12297#12321#0" />
-                <element signature="n#!!block;n#NewFile#0" />
-                <element signature="e#12502#12531#0" />
-                <element signature="n#!!block;n#ReadLineFile#0" />
-                <element signature="e#12897#12914#0" />
-                <element signature="e#12919#13127#0" />
-                <element signature="e#12977#13112#0" />
-                <element signature="e#13012#13092#0" />
-                <element signature="n#!!block;n#ListFiles#0" />
-                <element signature="e#13326#13367#0" />
-                <element signature="e#13395#13531#0" />
-                <element signature="e#13432#13522#0" />
-                <element signature="n#!!block;n#Error#0" />
-                <element signature="n#!!block;n#Success#0" />
-              </folding>
+            <state relative-caret-position="277">
+              <caret line="979" column="55" selection-start-line="979" selection-start-column="55" selection-end-line="979" selection-end-column="55" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://D:/mosquitto/mosquitto.conf">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="19">
+                <caret line="1" selection-start-line="1" selection-end-line="1" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="979" column="55" lean-forward="true" selection-start-line="979" selection-start-column="55" selection-end-line="979" selection-end-column="55" />
+            <state relative-caret-position="304">
+              <caret line="442" column="13" lean-forward="true" selection-start-line="442" selection-start-column="13" selection-end-line="442" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -252,8 +120,8 @@
         <option value="$PROJECT_DIR$/../新建文本文档 (5) - 副本.txt" />
         <option value="$PROJECT_DIR$/test/main.go" />
         <option value="$PROJECT_DIR$/../project2019-10-21.log" />
-        <option value="$PROJECT_DIR$/main.go" />
         <option value="D:/mosquitto/mosquitto.conf" />
+        <option value="$PROJECT_DIR$/main.go" />
       </list>
     </option>
   </component>
@@ -335,8 +203,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -349,7 +218,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -372,16 +241,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="1" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
-          <folding>
-            <element signature="e#14#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test/main.go" />
     <entry file="file://$PROJECT_DIR$/../project2019-10-21.log">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
@@ -413,7 +273,7 @@
     <entry file="file://D:/mosquitto/mosquitto.conf">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="277">
-          <caret line="979" column="55" lean-forward="true" selection-start-line="979" selection-start-column="55" selection-end-line="979" selection-end-column="55" />
+          <caret line="979" column="55" selection-start-line="979" selection-start-column="55" selection-end-line="979" selection-end-column="55" />
         </state>
       </provider>
     </entry>
@@ -424,145 +284,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://D:/Documents/Tencent Files/1340691923/FileRecv/MobileFile/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="29" column="31" lean-forward="true" selection-end-line="632" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="19">
+            <caret line="1" selection-start-line="1" selection-end-line="1" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="628" column="32" lean-forward="true" selection-start-line="628" selection-start-column="32" selection-end-line="628" selection-end-column="32" />
-          <folding>
-            <element signature="e#269#347#0" />
-            <element signature="e#363#1097#0" />
-            <element signature="e#1307#1472#0" />
-            <element signature="n#!!block;n#main#1" />
-            <element signature="e#1573#5327#0" />
-            <element signature="e#1587#1635#0" />
-            <element signature="e#1732#1742#0" />
-            <element signature="e#1755#1764#0" />
-            <element signature="e#1810#1882#0" />
-            <element signature="e#1875#1877#0" />
-            <element signature="e#1920#2317#0" />
-            <element signature="e#1949#2024#0" />
-            <element signature="e#2059#2123#0" />
-            <element signature="e#2158#2222#0" />
-            <element signature="e#2253#2313#0" />
-            <element signature="e#2340#5323#0" />
-            <element signature="e#2353#3601#0" />
-            <element signature="e#2436#3588#0" />
-            <element signature="e#2516#3580#0" />
-            <element signature="e#2604#2678#0" />
-            <element signature="e#2772#2849#0" />
-            <element signature="e#2944#3022#0" />
-            <element signature="e#3114#3193#0" />
-            <element signature="e#3218#3571#0" />
-            <element signature="e#3278#3561#0" />
-            <element signature="e#3300#3412#0" />
-            <element signature="e#3434#3550#0" />
-            <element signature="e#3615#4368#0" />
-            <element signature="e#3633#3658#0" />
-            <element signature="e#3682#4362#0" />
-            <element signature="e#3705#4022#0" />
-            <element signature="e#3760#4014#0" />
-            <element signature="e#3780#3883#0" />
-            <element signature="e#3903#4005#0" />
-            <element signature="e#4039#4098#0" />
-            <element signature="e#4115#4256#0" />
-            <element signature="e#4213#4248#0" />
-            <element signature="e#4273#4355#0" />
-            <element signature="e#4383#4637#0" />
-            <element signature="e#4400#4425#0" />
-            <element signature="e#4450#4631#0" />
-            <element signature="e#4522#5189#0" />
-            <element signature="e#4582#5176#0" />
-            <element signature="e#4662#5168#0" />
-            <element signature="e#4760#4808#0" />
-            <element signature="e#4714#4758#0" />
-            <element signature="e#4913#4957#0" />
-            <element signature="e#5017#5062#0" />
-            <element signature="e#5114#5159#0" />
-            <element signature="e#5350#5373#0" />
-            <element signature="e#5375#5395#0" />
-            <element signature="e#5435#5457#0" />
-            <element signature="e#5500#5544#0" />
-            <element signature="e#5590#5637#0" />
-            <element signature="e#5683#5728#0" />
-            <element signature="e#5774#5819#0" />
-            <element signature="n#!!block;n#WalkDir#0" />
-            <element signature="e#5936#6081#0" />
-            <element signature="e#5953#6033#0" />
-            <element signature="e#6039#6078#0" />
-            <element signature="n#!!block;n#StopAction#0" />
-            <element signature="n#!!block;n#ExportAction#0" />
-            <element signature="e#6773#6811#0" />
-            <element signature="e#6835#6873#0" />
-            <element signature="e#6897#6936#0" />
-            <element signature="e#6956#6994#0" />
-            <element signature="e#7044#7091#0" />
-            <element signature="e#7162#7314#0" />
-            <element signature="e#7195#7308#0" />
-            <element signature="e#6945#6954#0" />
-            <element signature="n#!!block;n#OpenDirActionTriggered#0" />
-            <element signature="e#7594#7630#0" />
-            <element signature="e#7643#7656#0" />
-            <element signature="e#7393#7413#0" />
-            <element signature="e#7721#7755#0" />
-            <element signature="e#7785#7819#0" />
-            <element signature="n#!!block;n#OpenFileActionTriggered#0" />
-            <element signature="e#8044#8080#0" />
-            <element signature="e#8093#8106#0" />
-            <element signature="e#7830#7850#0" />
-            <element signature="e#8170#8198#0" />
-            <element signature="e#8229#8259#0" />
-            <element signature="n#!!block;n#ExecAction#0" />
-            <element signature="e#8651#8689#0" />
-            <element signature="e#8714#8752#0" />
-            <element signature="e#8777#8816#0" />
-            <element signature="e#8866#8903#0" />
-            <element signature="e#8959#8996#0" />
-            <element signature="e#9052#9089#0" />
-            <element signature="e#9103#9140#0" />
-            <element signature="e#9150#9191#0" />
-            <element signature="e#9202#9244#0" />
-            <element signature="e#9255#9297#0" />
-            <element signature="e#8919#9031#0" />
-            <element signature="e#9659#9839#0" />
-            <element signature="e#9663#9808#0" />
-            <element signature="e#9673#9745#0" />
-            <element signature="e#9988#10049#0" />
-            <element signature="e#10181#10649#0" />
-            <element signature="e#10191#10206#0" />
-            <element signature="e#10230#10488#0" />
-            <element signature="e#10284#10336#0" />
-            <element signature="e#10835#10873#0" />
-            <element signature="n#!!block;n#ConvertByte2String#0" />
-            <element signature="e#10751#10940#0" />
-            <element signature="e#10769#10880#0" />
-            <element signature="e#10882#10906#0" />
-            <element signature="e#10908#10937#0" />
-            <element signature="n#!!block;n#CopeFile#0" />
-            <element signature="e#11321#11426#0" />
-            <element signature="e#11478#11517#0" />
-            <element signature="e#11586#11610#0" />
-            <element signature="e#11666#11696#0" />
-            <element signature="e#11702#11882#0" />
-            <element signature="e#11805#11879#0" />
-            <element signature="n#!!block;n#Close#0" />
-            <element signature="e#11942#12018#0" />
-            <element signature="n#!!block;n#PathExists#0" />
-            <element signature="e#12250#12273#0" />
-            <element signature="e#12297#12321#0" />
-            <element signature="n#!!block;n#NewFile#0" />
-            <element signature="e#12502#12531#0" />
-            <element signature="n#!!block;n#ReadLineFile#0" />
-            <element signature="e#12897#12914#0" />
-            <element signature="e#12919#13127#0" />
-            <element signature="e#12977#13112#0" />
-            <element signature="e#13012#13092#0" />
-            <element signature="n#!!block;n#ListFiles#0" />
-            <element signature="e#13326#13367#0" />
-            <element signature="e#13395#13531#0" />
-            <element signature="e#13432#13522#0" />
-            <element signature="n#!!block;n#Error#0" />
-            <element signature="n#!!block;n#Success#0" />
-          </folding>
+        <state relative-caret-position="304">
+          <caret line="442" column="13" lean-forward="true" selection-start-line="442" selection-start-column="13" selection-end-line="442" selection-end-column="13" />
         </state>
       </provider>
     </entry>
