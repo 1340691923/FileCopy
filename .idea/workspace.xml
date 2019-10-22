@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/main.go" line="595" />
+    <bookmark url="file://$PROJECT_DIR$/main.go" line="2" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a6162e6-caf1-43f6-9a18-b4d8eb96a5c7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,24 +15,30 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://D:/mosquitto/mosquitto.conf">
+        <entry file="file://F:/old/111.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="979" column="55" selection-start-line="979" selection-start-column="55" selection-end-line="979" selection-end-column="55" />
+            <state relative-caret-position="172">
+              <caret line="172759" column="8" selection-start-line="172759" selection-start-column="8" selection-end-line="172759" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="19">
-                <caret line="1" selection-start-line="1" selection-end-line="1" />
-              </first_editor>
-              <second_editor />
+        <entry file="file://F:/crm/cmd/main.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://D:/Documents/Tencent Files/1340691923/FileRecv/main (2).go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="217">
+              <caret line="429" column="8" selection-start-line="429" selection-start-column="8" selection-end-line="431" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -39,29 +46,59 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="20" column="22" lean-forward="true" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+            <state relative-caret-position="311">
+              <caret line="450" column="36" lean-forward="true" selection-start-line="450" selection-start-column="36" selection-end-line="450" selection-end-column="36" />
               <folding>
-                <element signature="e#14#253#0" expanded="true" />
+                <element signature="e#14#264#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../新建文本文档 (5) - 副本.txt">
+        <entry file="file://F:/go/pkg/mod/github.com/lxn/walk@v0.0.0-20191001144247-31870cf268b0/examples/progressindicator/dialog.ui">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+            <state relative-caret-position="-2356">
+              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://D:/Documents/Tencent Files/1340691923/FileRecv/16TID.txt">
+        <entry file="file://F:/go/pkg/mod/github.com/lxn/walk@v0.0.0-20191001144247-31870cf268b0/examples/progressindicator/dialog_ui.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="172766" column="8" selection-start-line="172766" selection-start-column="8" selection-end-line="172766" selection-end-column="8" />
+            <state relative-caret-position="217">
+              <caret line="54" column="18" selection-start-line="54" selection-start-column="18" selection-end-line="54" selection-end-column="18" />
+              <folding>
+                <element signature="e#66#99#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://F:/go/pkg/mod/github.com/lxn/walk@v0.0.0-20191001144247-31870cf268b0/examples/progressindicator/pi.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="28" column="39" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://F:/go/pkg/mod/github.com/lxn/walk@v0.0.0-20191001144247-31870cf268b0/progressindicator.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="53" column="1" selection-start-line="53" selection-start-column="1" selection-end-line="53" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://F:/go/pkg/mod/github.com/lxn/win@v0.0.0-20190919090605-24c5960b03d8/shobj.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="196">
+              <caret line="55" column="42" selection-start-line="55" selection-start-column="26" selection-end-line="55" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -77,14 +114,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>walk</find>
-      <find>Dir</find>
-      <find>.SetTe</find>
-      <find>匹配</find>
-      <find>needMoveCount</find>
-      <find>lineMap[</find>
       <find>runtime.</find>
-      <find>fmt.</find>
       <find>defer</find>
       <find>addFirend</find>
       <find>go</find>
@@ -107,7 +137,21 @@
       <find>11070101</find>
       <find>stopFlag</find>
       <find>for</find>
+      <find>bar</find>
+      <find>Progress</find>
+      <find>fmt.</find>
+      <find>noProgressBtn</find>
+      <find>getNum</find>
+      <find>In</find>
+      <find>InLineArr</find>
     </findStrings>
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
+    <dirStrings>
+      <dir>F:\go\pkg\mod\github.com\lxn\walk@v0.0.0-20191001144247-31870cf268b0</dir>
+      <dir>F:\go\pkg\mod\github.com\lxn\walk@v0.0.0-20191001144247-31870cf268b0\examples</dir>
+    </dirStrings>
   </component>
   <component name="GOROOT" path="C:\Go" />
   <component name="Git.Settings">
@@ -123,13 +167,14 @@
         <option value="$PROJECT_DIR$/test/main.go" />
         <option value="$PROJECT_DIR$/../project2019-10-21.log" />
         <option value="D:/mosquitto/mosquitto.conf" />
+        <option value="F:/crm/cmd/main.go" />
         <option value="$PROJECT_DIR$/main.go" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="258" />
-    <option name="y" value="29" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
@@ -144,6 +189,36 @@
             <path>
               <item name="love" type="b2602c69:ProjectViewProjectNode" />
               <item name="love" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="love" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="love" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Go Modules &lt;cope-file&gt;" type="20ee2d1f:SyntheticLibraryElementNode" />
+            </path>
+            <path>
+              <item name="love" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Go Modules &lt;cope-file&gt;" type="20ee2d1f:SyntheticLibraryElementNode" />
+              <item name="walk@v0.0.0-20191001144247-31870cf268b0" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="love" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Go Modules &lt;cope-file&gt;" type="20ee2d1f:SyntheticLibraryElementNode" />
+              <item name="walk@v0.0.0-20191001144247-31870cf268b0" type="462c0819:PsiDirectoryNode" />
+              <item name="examples" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="love" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Go Modules &lt;cope-file&gt;" type="20ee2d1f:SyntheticLibraryElementNode" />
+              <item name="walk@v0.0.0-20191001144247-31870cf268b0" type="462c0819:PsiDirectoryNode" />
+              <item name="examples" type="462c0819:PsiDirectoryNode" />
+              <item name="progressindicator" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -207,7 +282,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2553305" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -251,31 +326,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../新建文本文档 (5) - 副本.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Go/src/sync/mutex.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="302">
           <caret line="86" column="18" lean-forward="true" selection-start-line="86" selection-start-column="18" selection-end-line="86" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Documents/Tencent Files/1340691923/FileRecv/16TID.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="172766" column="8" selection-start-line="172766" selection-start-column="8" selection-end-line="172766" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/mosquitto/mosquitto.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="979" column="55" selection-start-line="979" selection-start-column="55" selection-end-line="979" selection-end-column="55" />
         </state>
       </provider>
     </entry>
@@ -303,12 +357,120 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://D:/Documents/Tencent Files/1340691923/FileRecv/16TID.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="172760" column="8" lean-forward="true" selection-start-line="172760" selection-start-column="8" selection-end-line="172760" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/mosquitto/mosquitto.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="979" column="55" selection-start-line="979" selection-start-column="55" selection-end-line="979" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../新建文本文档 (5) - 副本.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/go/pkg/mod/github.com/lxn/walk@v0.0.0-20191001144247-31870cf268b0/webview_dwebbrowserevents2.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="232" column="38" lean-forward="true" selection-start-line="232" selection-start-column="38" selection-end-line="232" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/crm/static/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="11" column="40" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Go/src/builtin/builtin.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="188" column="14" selection-start-line="188" selection-start-column="14" selection-end-line="188" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/go/pkg/mod/github.com/lxn/walk@v0.0.0-20191001144247-31870cf268b0/examples/progressindicator/dialog.ui">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2356">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/go/pkg/mod/github.com/lxn/walk@v0.0.0-20191001144247-31870cf268b0/examples/progressindicator/dialog_ui.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="54" column="18" selection-start-line="54" selection-start-column="18" selection-end-line="54" selection-end-column="18" />
+          <folding>
+            <element signature="e#66#99#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/go/pkg/mod/github.com/lxn/walk@v0.0.0-20191001144247-31870cf268b0/examples/progressindicator/pi.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="28" column="39" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/go/pkg/mod/github.com/lxn/win@v0.0.0-20190919090605-24c5960b03d8/shobj.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="55" column="42" selection-start-line="55" selection-start-column="26" selection-end-line="55" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/go/pkg/mod/github.com/lxn/walk@v0.0.0-20191001144247-31870cf268b0/progressindicator.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="53" column="1" selection-start-line="53" selection-start-column="1" selection-end-line="53" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/old/111.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="172759" column="8" selection-start-line="172759" selection-start-column="8" selection-end-line="172759" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/crm/cmd/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Documents/Tencent Files/1340691923/FileRecv/MobileFile/main(1).go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="42" column="75" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Documents/Tencent Files/1340691923/FileRecv/main (2).go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="429" column="8" selection-start-line="429" selection-start-column="8" selection-end-line="431" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" column="22" lean-forward="true" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+        <state relative-caret-position="311">
+          <caret line="450" column="36" lean-forward="true" selection-start-line="450" selection-start-column="36" selection-end-line="450" selection-end-column="36" />
           <folding>
-            <element signature="e#14#253#0" expanded="true" />
+            <element signature="e#14#264#0" expanded="true" />
           </folding>
         </state>
       </provider>

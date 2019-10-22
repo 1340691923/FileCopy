@@ -16,6 +16,7 @@ import (
 	"strconv"
 	"strings"
 	"sync"
+	"syscall"
 )
 
 type FileInfo struct {
@@ -67,18 +68,22 @@ var needMoveCount int
 type Charset string
 
 const(
-	txtFilePath int32 = 1
-	exportFilePath int32 = 2
-	sourceDirPath int32 = 1
-	targetDirPath int32 = 2
+	TXTFILEPATH int32 = 1
+	EXPORTFILEPATH int32 = 2
+	SOURCEDIRPATH int32 = 1
+	TARGETDIRPATH int32 = 2
 	UTF8    = Charset("UTF-8")
 	GB18030 = Charset("GB18030")
+	COPY = 1
+	CUT = 2
+	DUMP = 1
+	NODUMP = 2
 )
 
 func main(){
 	mw := new(MyWindow)
-	mw.Baz = 1
-	mw.Dump = 1
+	mw.Baz = COPY
+	mw.Dump = DUMP
 	if err := (MainWindow{
 		Icon:"icon.ico",
 		Font:Font{Family:"Microsoft YaHei",PointSize:8,Bold:true},
@@ -141,13 +146,13 @@ func main(){
 									RadioButton{
 										Name:  "Dump",
 										Text:  "跳过",
-										Value: 1,
+										Value: DUMP,
 										AssignTo:&mw.DumpBtn,
 									},
 									RadioButton{
 										Name:  "NoDump",
 										Text:  "覆盖",
-										Value: 2,
+										Value: NODUMP,
 										AssignTo:&mw.NoDumpBtn,
 									},
 								},
@@ -163,15 +168,15 @@ func main(){
 						DataMember: "Baz",
 						Buttons: []RadioButton{
 							RadioButton{
-								Name:  "oneRB",
+								Name:  "copy",
 								Text:  "复制",
-								Value: 1,
+								Value: COPY,
 								AssignTo:&mw.CopeBtn,
 							},
 							RadioButton{
-								Name:  "twoRB",
+								Name:  "cut",
 								Text:  "剪切",
-								Value: 2,
+								Value: CUT,
 								AssignTo:&mw.CutBtn,
 							},
 						},
@@ -203,6 +208,7 @@ func main(){
 					},
 					ListBox{
 						AssignTo: &mw.fb,
+						MinSize:Size{Width:300},
 					},
 				},
 			},
@@ -234,10 +240,10 @@ func main(){
 
 	mw.ExecBtn.Clicked().Attach(func() {go mw.ExecAction()})
 	mw.ExportBtn.Clicked().Attach(func() {go mw.ExportAction()})
-	mw.ChooseTxtBtn.Clicked().Attach(func() {go mw.OpenFileActionTriggered(txtFilePath)})
-	mw.ChooseExportBtn.Clicked().Attach(func() {go mw.OpenFileActionTriggered(exportFilePath)})
-	mw.ChooseSourceBtn.Clicked().Attach(func() {go mw.OpenDirActionTriggered(sourceDirPath)})
-	mw.ChooseTargetBtn.Clicked().Attach(func() {go mw.OpenDirActionTriggered(targetDirPath)})
+	mw.ChooseTxtBtn.Clicked().Attach(func() {go mw.OpenFileActionTriggered(TXTFILEPATH)})
+	mw.ChooseExportBtn.Clicked().Attach(func() {go mw.OpenFileActionTriggered(EXPORTFILEPATH)})
+	mw.ChooseSourceBtn.Clicked().Attach(func() {go mw.OpenDirActionTriggered(SOURCEDIRPATH)})
+	mw.ChooseTargetBtn.Clicked().Attach(func() {go mw.OpenDirActionTriggered(TARGETDIRPATH)})
 	mw.Run()
 }
 
@@ -325,9 +331,9 @@ func (mw *MyWindow)OpenDirActionTriggered(types int32){
 		return
 	}
 	s := fmt.Sprintf("%s", dlg.FilePath)
-	if types == sourceDirPath{
+	if types == SOURCEDIRPATH{
 		mw.SourceDirText.SetText(s)
-	}else if types == targetDirPath{
+	}else if types == TARGETDIRPATH{
 		mw.TargetDirText.SetText(s)
 	}
 }
@@ -345,9 +351,9 @@ func (mw *MyWindow)OpenFileActionTriggered(types int32){
 	}
 
 	s := fmt.Sprintf("%s", dlg.FilePath)
-	if types == txtFilePath{
+	if types == TXTFILEPATH{
 		mw.TxtText.SetText(s)
-	}else if types == exportFilePath{
+	}else if types == EXPORTFILEPATH{
 		mw.ExportTxt.SetText(s)
 	}
 }
@@ -432,9 +438,14 @@ func (mw *MyWindow) ExecAction() {
 	mw.ExecBtn.SetText("匹配文件中...")
 
 	findArrlen := len(mw.FindArr)
-
-	for i:=0;i<findArrlen;i++{
+	i:=0
+	for ;i<findArrlen;i++{
 		for line,_:= range mw.lineMap{
+			if mw.lineMap[line] !="" {
+				continue
+			}
+			//已经存在就直接过 别浪费时间
+			//判断
 			fileName,_,_ := NewFile(mw.FindArr[i])
 			if fileName == line{
 				needMoveCount = needMoveCount +1
@@ -442,6 +453,7 @@ func (mw *MyWindow) ExecAction() {
 				break
 			}
 		}
+		mw.ExecBtn.SetText("匹配文件完成"+strconv.Itoa(mw.GetNum(findArrlen,i))+"%")
 	}
 
 	mw.ExecBtn.SetText("匹配完毕...")
@@ -509,14 +521,28 @@ func ConvertByte2String(byte []byte, charset Charset) string {
 
 //拷贝文件
 func(mw *MyWindow)CopeFile(needMoveFile string)(err error){
+
 	_,fileNames,sourceDir :=NewFile(needMoveFile)
+
+	copyFile := mw.TargetDirText.Text()+"\\"+fileNames
+
+	exist,_:= mw.PathExists(copyFile)
+
+	if mw.Baz == DUMP{
+		if exist{
+			return
+		}
+	}
+
 	//多线程拷贝
 	cmd := exec.Command("ROBOCOPY",sourceDir,mw.TargetDirText.Text(),fileNames,"/MT:128","/r:0")
 	//剪切
 	if mw.Baz == 2 {
 		cmd = exec.Command("ROBOCOPY",sourceDir,mw.TargetDirText.Text(),fileNames,"/mov","/MT:128","/r:0")
 	}
-
+	if runtime.GOOS == "windows" {
+		cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
+	}
 	stdout, err := cmd.StdoutPipe()
 
 	if  err != nil {//获取输出对象，可以从该对象中读取输出结果
@@ -630,3 +656,10 @@ func(mw *MyWindow) Error(msg string){walk.MsgBox(mw, "错误提示", msg, walk.M
 
 //提示
 func(mw *MyWindow) Success(msg string){walk.MsgBox(mw, "正确提示",msg , walk.MsgBoxIconInformation)}
+
+
+func(mw *MyWindow) GetNum(fenmu int,funzi int)(i int){
+	n2, _ := strconv.ParseFloat(fmt.Sprintf("%.2f", float64(funzi) / float64(fenmu)), 64)
+	i = int(n2 * 100)
+	return
+}
