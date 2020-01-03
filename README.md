@@ -2,7 +2,7 @@
 
 ![](https://img.shields.io/badge/golang-walk-green)
 
-<div align=center><img src="http://test.zcjian.cn/demo.png" /></div>
+<img src="http://test.zcjian.cn/demo.png"/>
 
 挑歌拷贝go程序
 
